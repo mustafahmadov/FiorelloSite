@@ -23,7 +23,7 @@ namespace FiorelloFrontToBack.Controllers
                 Sliders = _context.Sliders.ToList(),
                 SliderContent = _context.SliderContents.FirstOrDefault(),
                 Categories = _context.Categories.Where(c => c.HasDeleted == false).ToList(),
-                Products = _context.Products.Include(p => p.Category).Where(p => p.HasDeleted == false).ToList(),
+                Products = _context.Products.Include(p => p.Category).Where(p => p.HasDeleted == false).Take(8).ToList(),
                 About = _context.Abouts.FirstOrDefault(),
                 AboutInfos = _context.AboutInfo.ToList(),
                 Experts = _context.Experts.Include(e => e.Profession).ToList(),

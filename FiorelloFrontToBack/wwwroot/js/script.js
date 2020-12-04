@@ -1,4 +1,19 @@
 $(document).ready(function () {
+    let skip = 8;
+    let prCount = $('#count').val();
+    $(document).on('click', '#loadMore', function () {
+        $.ajax({
+            url: '/Product/GetProducts?skip='+skip,
+            type: 'GET',
+            success: function (res) {
+                $('#products').append(res);
+                skip += 8;
+                if (skip >= prCount) {
+                    $('#loadMore').remove();
+                };
+            }
+        })
+    });
 
     // HEADER
 

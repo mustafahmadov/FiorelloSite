@@ -8605,11 +8605,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\musta\\Desktop\\FiorelloFrontToBacks\\FiorelloFrontToBack\\FiorelloFrontToBack.csproj",
+      "projectUniqueName": "C:\\Users\\musta\\Desktop\\FiorelloSite\\FiorelloFrontToBack\\FiorelloFrontToBack.csproj",
       "projectName": "FiorelloFrontToBack",
-      "projectPath": "C:\\Users\\musta\\Desktop\\FiorelloFrontToBacks\\FiorelloFrontToBack\\FiorelloFrontToBack.csproj",
+      "projectPath": "C:\\Users\\musta\\Desktop\\FiorelloSite\\FiorelloFrontToBack\\FiorelloFrontToBack.csproj",
       "packagesPath": "C:\\Users\\musta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\musta\\Desktop\\FiorelloFrontToBacks\\FiorelloFrontToBack\\obj\\",
+      "outputPath": "C:\\Users\\musta\\Desktop\\FiorelloSite\\FiorelloFrontToBack\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\musta\\AppData\\Roaming\\NuGet\\NuGet.Config",

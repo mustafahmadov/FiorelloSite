@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JDoVuN32bfogV7OLPt1p/9wxZLb6eouhoSB73vqP0D02xWxv4/cKcp5UsywSZKcLifiKZIt07+exBnPkD39YNg==",
+  "dgSpecHash": "xb/SPSuCX8FHUc6eoR4GBrq3E5igKY97dBEG5Q+JiAnPfASYgR/Ezv9uJmDaA+aS3gc7pg/7fzyZBhlpB2COwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\musta\\Desktop\\FiorelloFrontToBacks\\FiorelloFrontToBack\\FiorelloFrontToBack.csproj",
+  "projectFilePath": "C:\\Users\\musta\\Desktop\\FiorelloSite\\FiorelloFrontToBack\\FiorelloFrontToBack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\musta\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\musta\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
