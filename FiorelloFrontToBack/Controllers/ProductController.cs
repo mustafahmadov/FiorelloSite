@@ -109,5 +109,33 @@ namespace FiorelloFrontToBack.Controllers
 
             return RedirectToAction(nameof(Basket));
         }
+        public IActionResult IncProductCount(int id)
+        {
+            List<BasketVM> basket = new List<BasketVM>();
+            basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+            BasketVM incPro = basket.FirstOrDefault(b => b.Id == id);
+            if (incPro != null)
+            {
+                incPro.Count++;
+            }
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(basket));
+
+            return RedirectToAction(nameof(Basket));
+
+        }
+        public IActionResult DecProductCount(int id)
+        {
+            List<BasketVM> basket = new List<BasketVM>();
+            basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+            BasketVM incPro = basket.FirstOrDefault(b => b.Id == id);
+            if (incPro != null && incPro.Count>1)
+            {
+                incPro.Count--;
+            }
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(basket));
+
+            return RedirectToAction(nameof(Basket));
+
+        }
     }
 }
