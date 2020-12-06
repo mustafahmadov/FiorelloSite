@@ -297,3 +297,4 @@ C:\Users\musta\Desktop\FiorelloSite\FiorelloFrontToBack\obj\Debug\netcoreapp3.1\
 C:\Users\musta\Desktop\FiorelloSite\FiorelloFrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
 C:\Users\musta\Desktop\FiorelloSite\FiorelloFrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductPartial.cshtml.g.cs
 C:\Users\musta\Desktop\FiorelloSite\FiorelloFrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Product\Basket.cshtml.g.cs
+C:\Users\musta\Desktop\FiorelloSite\FiorelloFrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_MiniBasketPartial.cshtml.g.cs
