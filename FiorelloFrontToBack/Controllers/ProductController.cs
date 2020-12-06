@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using FiorelloFrontToBack.DAL;
 using FiorelloFrontToBack.Models;
+using FiorelloFrontToBack.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace FiorelloFrontToBack.Controllers
 {
@@ -16,6 +19,7 @@ namespace FiorelloFrontToBack.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             List<Product> model = _context.Products
@@ -33,6 +37,77 @@ namespace FiorelloFrontToBack.Controllers
                                                 .Take(8)
                                                   .ToList();
             return PartialView("_ProductPartial",model);
-        } 
+        }
+        public IActionResult GetBasketCount()
+        {
+            List<BasketVM> basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+            return Content(basket.Count.ToString());
+        }
+
+        public async Task<IActionResult> AddToBasket(int id)
+        {
+            
+            Product product = await _context.Products.FindAsync(id);
+            if (product == null)
+                return NotFound();
+            List<BasketVM> basket = new List<BasketVM>();
+            if(Request.Cookies["basket"] != null)
+            {
+                basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+            }
+            else
+            {
+                basket = new List<BasketVM>();
+            }
+            BasketVM repeatBasket = basket.FirstOrDefault(p => p.Id == id);
+            if(repeatBasket == null)
+            {
+                basket.Add(new BasketVM()
+                {
+                    Id = id,
+                    Count = 1,
+                    
+                });
+            }
+            else
+            {
+                repeatBasket.Count += 1;
+            }
+            
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(basket));
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Basket()
+        {
+            
+            ViewBag.Total = 0;
+            List<BasketVM> dbBasket = new List<BasketVM>();
+            List<BasketVM> basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+            foreach (BasketVM product in basket)
+            {
+                Product pro = await _context.Products.FindAsync(product.Id);
+                product.Title = pro.Title;
+                product.Image = pro.Image;
+                product.Price = pro.Price;
+                ViewBag.Total += pro.Price*product.Count;
+                dbBasket.Add(product);
+            }
+            ViewBag.BasketCount = basket.Count();
+            return View(dbBasket);
+        }
+
+        public IActionResult DeleteProduct(int id)
+        {
+            List<BasketVM> basket = new List<BasketVM>();
+            basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+            if (basket == null)
+                return NotFound();
+            BasketVM removedItem =basket.FirstOrDefault(b => b.Id == id);
+            if (removedItem != null)
+                basket.Remove(removedItem);
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(basket));
+
+            return RedirectToAction(nameof(Basket));
+        }
     }
 }

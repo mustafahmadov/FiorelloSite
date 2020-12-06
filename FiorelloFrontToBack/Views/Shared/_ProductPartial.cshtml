@@ -13,7 +13,10 @@
                     <h6>@pr.Title</h6>
                 </div>
                 <div class="price">
-                    <span class="text-black-50">Add to cart</span>
+                    <a class="addBasket" asp-controller="Product" asp-action="AddToBasket" asp-route-id="@pr.Id">
+                        <span class="text-black-50">Add to cart</span>
+                    </a>
+                    
                     <span class="text-black-50">$@pr.Price</span>
                 </div>
             </div>

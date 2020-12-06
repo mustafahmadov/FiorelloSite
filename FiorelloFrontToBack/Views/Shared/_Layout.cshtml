@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@ViewBag.BasketCount=0
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -52,14 +53,14 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item shop-li">
-                                    <a class="nav-link" href="#">Shop</a>
+                                    <a class="nav-link" asp-controller="Product" asp-action="Index">Shop</a>
                                     <div class="container">
                                         <div class="row shop py-5">
                                             <div class="col-lg-3">
                                                 <div class="item px-4">
                                                     <h5>Product Types</h5>
                                                     <ul class="list-unstyled py-3">
-                                                        <li class=""><a class="px-3" asp-controller="Product" asp-action="Index">Product Types 1</a></li>
+                                                        <li class=""><a class="px-3" >Product Types 1</a></li>
                                                         <li class=""><a class="px-3" href="">Product Types 2</a></li>
                                                         <li class=""><a class="px-3" href="">Product Types 3</a></li>
                                                     </ul>
@@ -157,9 +158,11 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item my-auto shop-cart">
-                                    <i class="fas fa-shopping-bag"></i>
-                                    <sup class="rounded-circle">0</sup>
-                                    <span>CART ($0)</span>
+                                    <a asp-controller="Product" asp-action="Basket"> 
+                                        <i class="fas fa-shopping-bag"></i>
+                                        <sup class="rounded-circle">0</sup>
+                                    </a>
+                                    @*<span>CART ($0)</span>*@
                                     <ul class="list-unstyled py-3">
                                         <li class="">No products in the cart.</li>
                                     </ul>

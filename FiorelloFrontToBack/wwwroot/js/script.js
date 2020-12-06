@@ -1,6 +1,7 @@
 $(document).ready(function () {
     let skip = 8;
     let prCount = $('#count').val();
+    
     $(document).on('click', '#loadMore', function () {
         $.ajax({
             url: '/Product/GetProducts?skip='+skip,
@@ -14,6 +15,27 @@ $(document).ready(function () {
             }
         })
     });
+    $(document).on('click', '#remove', function () {
+        $(this).parent().parent().remove();
+    })
+    $(document).on('click', '.minus', function (e) {
+        this.nextElementSibling.value--;
+        if (this.nextElementSibling.value <= 0) {
+            $(this).attr("disabled",true);
+        }
+    })
+    $(document).on('click', '.plus', function (e) {
+        this.previousElementSibling.value++;
+    })
+
+        let basketCount = $('.rounded-circle');
+        $.ajax({
+            url: '/Product/GetBasketCount',
+            type: 'GET',
+            success: function (res) {
+                basketCount.text(res);
+            }
+        })
 
     // HEADER
 
