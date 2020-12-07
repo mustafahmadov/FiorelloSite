@@ -22,12 +22,8 @@ namespace FiorelloFrontToBack.Controllers
 
         public IActionResult Index()
         {
-            List<Product> model = _context.Products
-                                            .Where(p => p.HasDeleted == false)
-                                              .Take(8)
-                                                .ToList();
             ViewBag.PrCount = _context.Products.Count();
-            return View(model);
+            return View();
         }
         public IActionResult GetProducts(int skip)
         {
@@ -66,7 +62,6 @@ namespace FiorelloFrontToBack.Controllers
                 {
                     Id = id,
                     Count = 1,
-                    
                 });
             }
             else

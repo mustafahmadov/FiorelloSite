@@ -19,10 +19,6 @@ namespace FiorelloFrontToBack.Controllers
         }
         public IActionResult Index()
         {
-            HttpContext.Session.SetString("name", "Mustafa");
-            Response.Cookies.Append("surname", "Ahmadov", new CookieOptions {
-                MaxAge = TimeSpan.FromSeconds(40),
-            }); 
             HomeVM homeVM = new HomeVM
             {
                 Sliders = _context.Sliders.ToList(),
@@ -35,12 +31,6 @@ namespace FiorelloFrontToBack.Controllers
                 Blogs = _context.Blogs.ToList()
             };
             return View(homeVM);
-        }
-        public IActionResult Basket()
-        {
-            string cookie = Request.Cookies["surname"];
-            string session = HttpContext.Session.GetString("name");
-            return Content($"{session} {cookie}");
         }
     }
 }

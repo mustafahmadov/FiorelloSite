@@ -24,7 +24,8 @@
                 </div>
             </div>
         }*@
-        <partial name="_ProductPartial" />
+        @*<partial name="_ProductPartial" />*@
+        @await Component.InvokeAsync("Product",8)
 
     </div>
 </div>
