@@ -51,6 +51,10 @@ namespace FiorelloFrontToBack
             {
                 endpoints.MapControllerRoute(
                     "default",
+                    "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+                    );
+                endpoints.MapControllerRoute(
+                    "default",
                     "{controller=Home}/{action=Index}/{id?}"
                     );
             });

@@ -127,6 +127,9 @@ namespace FiorelloFrontToBack.Migrations
                     b.Property<DateTime?>("DeletedTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("HasDeleted")
                         .HasColumnType("bit");
 
