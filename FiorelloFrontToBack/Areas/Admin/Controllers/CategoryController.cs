@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using FiorelloFrontToBack.DAL;
 using FiorelloFrontToBack.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FiorelloFrontToBack.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin")]
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;

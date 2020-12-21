@@ -1,0 +1,20 @@
+﻿@model Slider
+@{ ViewData["Title"] = "Update"; }
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Category</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="@Model.Photo"></label>
+                        <input asp-for="@Model.Photo" class="form-control" placeholder="Name">
+                        <span asp-validation-for="@Model.Photo" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

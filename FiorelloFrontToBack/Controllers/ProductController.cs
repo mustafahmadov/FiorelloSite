@@ -76,19 +76,25 @@ namespace FiorelloFrontToBack.Controllers
         {
             
             ViewBag.Total = 0;
-            List<BasketVM> dbBasket = new List<BasketVM>();
-            List<BasketVM> basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
-            foreach (BasketVM product in basket)
+            ViewBag.BasketCount = 0;
+            if (Request.Cookies["basket"] != null)
             {
-                Product pro = await _context.Products.FindAsync(product.Id);
-                product.Title = pro.Title;
-                product.Image = pro.Image;
-                product.Price = pro.Price;
-                ViewBag.Total += pro.Price*product.Count;
-                dbBasket.Add(product);
+                List<BasketVM> dbBasket = new List<BasketVM>();
+                List<BasketVM> basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+                foreach (BasketVM product in basket)
+                {
+                    Product pro = await _context.Products.FindAsync(product.Id);
+                    product.Title = pro.Title;
+                    product.Image = pro.Image;
+                    product.Price = pro.Price;
+                    ViewBag.Total += pro.Price * product.Count;
+                    dbBasket.Add(product);
+                }
+                ViewBag.BasketCount = basket.Count();
+                return View(dbBasket);
             }
-            ViewBag.BasketCount = basket.Count();
-            return View(dbBasket);
+
+            return View();
         }
 
         public IActionResult DeleteProduct(int id)
